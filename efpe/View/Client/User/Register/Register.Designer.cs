@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtUsername = new System.Windows.Forms.TextBox();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.txtKonfirmasiPassword = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.btnDaftar = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtKonfirmasiPassword = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.txtUsername = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
@@ -65,81 +65,17 @@
             this.groupBox1.TabIndex = 38;
             this.groupBox1.TabStop = false;
             // 
-            // label1
+            // btnDaftar
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(66, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(282, 38);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Daftar ke KlikWarnet";
-            // 
-            // txtUsername
-            // 
-            this.txtUsername.Location = new System.Drawing.Point(36, 111);
-            this.txtUsername.Multiline = true;
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(343, 33);
-            this.txtUsername.TabIndex = 1;
-            // 
-            // txtEmail
-            // 
-            this.txtEmail.Location = new System.Drawing.Point(36, 173);
-            this.txtEmail.Multiline = true;
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(343, 33);
-            this.txtEmail.TabIndex = 2;
-            // 
-            // txtPassword
-            // 
-            this.txtPassword.Location = new System.Drawing.Point(36, 235);
-            this.txtPassword.Multiline = true;
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(343, 33);
-            this.txtPassword.TabIndex = 3;
-            // 
-            // txtKonfirmasiPassword
-            // 
-            this.txtKonfirmasiPassword.Location = new System.Drawing.Point(36, 297);
-            this.txtKonfirmasiPassword.Multiline = true;
-            this.txtKonfirmasiPassword.Name = "txtKonfirmasiPassword";
-            this.txtKonfirmasiPassword.Size = new System.Drawing.Size(343, 33);
-            this.txtKonfirmasiPassword.TabIndex = 4;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(32, 88);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 17);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Username";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 7.8F);
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(32, 151);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(39, 17);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Email";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 7.8F);
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(32, 213);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(64, 17);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Password";
+            this.btnDaftar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnDaftar.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDaftar.Location = new System.Drawing.Point(36, 362);
+            this.btnDaftar.Name = "btnDaftar";
+            this.btnDaftar.Size = new System.Drawing.Size(342, 40);
+            this.btnDaftar.TabIndex = 9;
+            this.btnDaftar.Text = "Daftar";
+            this.btnDaftar.UseVisualStyleBackColor = false;
+            this.btnDaftar.Click += new System.EventHandler(this.btnDaftar_Click);
             // 
             // label5
             // 
@@ -152,17 +88,81 @@
             this.label5.TabIndex = 8;
             this.label5.Text = "Konfirmasi password";
             // 
-            // btnDaftar
+            // label4
             // 
-            this.btnDaftar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btnDaftar.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDaftar.Location = new System.Drawing.Point(36, 362);
-            this.btnDaftar.Name = "btnDaftar";
-            this.btnDaftar.Size = new System.Drawing.Size(342, 40);
-            this.btnDaftar.TabIndex = 9;
-            this.btnDaftar.Text = "Daftar";
-            this.btnDaftar.UseVisualStyleBackColor = false;
-            this.btnDaftar.Click += new System.EventHandler(this.btnDaftar_Click);
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 7.8F);
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(32, 213);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(64, 17);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Password";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 7.8F);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(32, 151);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(39, 17);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Email";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(32, 88);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(67, 17);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Username";
+            // 
+            // txtKonfirmasiPassword
+            // 
+            this.txtKonfirmasiPassword.Location = new System.Drawing.Point(36, 297);
+            this.txtKonfirmasiPassword.Multiline = true;
+            this.txtKonfirmasiPassword.Name = "txtKonfirmasiPassword";
+            this.txtKonfirmasiPassword.Size = new System.Drawing.Size(343, 33);
+            this.txtKonfirmasiPassword.TabIndex = 4;
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.Location = new System.Drawing.Point(36, 235);
+            this.txtPassword.Multiline = true;
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(343, 33);
+            this.txtPassword.TabIndex = 3;
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Location = new System.Drawing.Point(36, 173);
+            this.txtEmail.Multiline = true;
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(343, 33);
+            this.txtEmail.TabIndex = 2;
+            // 
+            // txtUsername
+            // 
+            this.txtUsername.Location = new System.Drawing.Point(36, 111);
+            this.txtUsername.Multiline = true;
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(343, 33);
+            this.txtUsername.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(66, 29);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(282, 38);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Daftar ke KlikWarnet";
             // 
             // pictureBox14
             // 
@@ -179,7 +179,7 @@
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.pictureBox1.Image = global::efpe.Properties.Resources.Cuplikan_layar_2023_12_11_182145_removebg_preview;
-            this.pictureBox1.Location = new System.Drawing.Point(156, 14);
+            this.pictureBox1.Location = new System.Drawing.Point(145, 14);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.MaximumSize = new System.Drawing.Size(283, 62);
             this.pictureBox1.Name = "pictureBox1";

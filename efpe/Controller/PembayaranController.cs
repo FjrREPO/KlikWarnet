@@ -11,13 +11,12 @@ namespace efpe.Controller
     {
         private readonly DbContext _con = new DbContext();
 
-        private readonly PembayaranRepository _pembayaranRepository = new PembayaranRepository();
-
         public bool AddData(PembayaranEntity newPembayaran)
         {
             try
             {
-                return _pembayaranRepository.AddData(newPembayaran);
+                PembayaranRepository repository = new PembayaranRepository();
+                return repository.AddData(newPembayaran);
             }
             catch (Exception ex)
             {
@@ -48,5 +47,21 @@ namespace efpe.Controller
                 return null;
             }
         }
+
+        public DateTime GetWaktuSelesai(int nomorKomputer)
+        {
+            try
+            {
+                PembayaranRepository repo = new PembayaranRepository();
+                DateTime? waktuSelesai = repo.GetWaktuSelesai(nomorKomputer);
+                return waktuSelesai.GetValueOrDefault();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception in GetWaktuSelesai: {ex.Message}");
+                throw;
+            }
+        }
+
     }
 }

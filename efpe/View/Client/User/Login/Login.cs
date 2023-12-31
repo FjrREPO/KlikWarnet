@@ -16,6 +16,28 @@ namespace efpe.View.Client.User.Login
             InitializeComponent();
             cookies = new CookieContainer();
             _userController = new UserController();
+            txtUsernameOrEmail.KeyDown += TxtUsernameOrEmail_KeyDown;
+            txtPassword.KeyDown += TxtPassword_KeyDown;
+        }
+
+        private void TxtUsernameOrEmail_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                this.SelectNextControl((Control)sender, true, true, true, true);
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void TxtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+                btnLogin_Click(sender, e);
+            }
         }
 
         private void btnLogin_Click(object sender, EventArgs e)

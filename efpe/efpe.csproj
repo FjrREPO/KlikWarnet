@@ -134,6 +134,12 @@
     <Compile Include="View\Admin\CRUD\Item\EditItem\EditItem.Designer.cs">
       <DependentUpon>EditItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Admin\CRUD\Pembayaran\LaporanPembayaran.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Admin\CRUD\Pembayaran\LaporanPembayaran.Designer.cs">
+      <DependentUpon>LaporanPembayaran.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Admin\CRUD\User\Login\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -198,6 +204,9 @@
     <EmbeddedResource Include="View\Admin\CRUD\Item\EditItem\EditItem.resx">
       <DependentUpon>EditItem.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Admin\CRUD\Pembayaran\LaporanPembayaran.resx">
+      <DependentUpon>LaporanPembayaran.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Client\Beranda\Beranda.resx">
       <DependentUpon>Beranda.cs</DependentUpon>
     </EmbeddedResource>
@@ -243,7 +252,6 @@
     <None Include="Resources\search %282%29.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="View\Admin\CRUD\Pembayaran\" />
     <Folder Include="View\Client\Promo\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

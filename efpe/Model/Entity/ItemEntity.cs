@@ -2,14 +2,13 @@
 {
     public class ItemEntity
     {
-        int nomor, id, nomorKomputer;
+        int nomor, id, nomorKomputer, digunakan;
         string vipAtauReguler;
-        bool digunakan;
         byte[] image;
 
         public ItemEntity() { }
 
-        public ItemEntity(int nomor, int id, int nomorKomputer, string vipAtauReguler, bool digunakan, byte[] image)
+        public ItemEntity(int nomor, int id, int nomorKomputer, string vipAtauReguler, int digunakan, byte[] image)
         {
             this.nomor = nomor;
             this.id = id;
@@ -23,7 +22,7 @@
         public int Id { get => id; set => id = value; }
         public int NomorKomputer { get => nomorKomputer; set => nomorKomputer = value; }
         public string VipAtauReguler { get => vipAtauReguler; set => vipAtauReguler = value; }
-        public bool Digunakan { get => digunakan; set => digunakan = value; }
+        public int Digunakan { get => digunakan; set => digunakan = value; }
         public byte[] Image { get => image; set => image = value; }
     }
 }

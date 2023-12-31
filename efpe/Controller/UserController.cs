@@ -8,9 +8,9 @@ namespace efpe.Controller
     {
         private readonly UserRepository _userRepository = new UserRepository();
 
-        public bool RegisterUser(string username, string email, string password)
+        public bool RegisterUser(string username, string email, string password, string vipAtauReguler)
         {
-            UserEntity newUser = new UserEntity { Username = username, Email = email, Password = password };
+            UserEntity newUser = new UserEntity { Username = username, Email = email, Password = password , VipAtauReguler = vipAtauReguler };
 
             return _userRepository.RegisterUser(newUser);
         }
@@ -23,6 +23,11 @@ namespace efpe.Controller
         public Tuple<string, string> GetUsernameAndEmail(string usernameOrEmail)
         {
             return _userRepository.GetUsernameAndEmail(usernameOrEmail);
+        }
+
+        public string GetVipAtauReguler(string email)
+        {
+            return _userRepository.GetVipAtauReguler(email);
         }
     }
 }

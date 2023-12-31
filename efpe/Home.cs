@@ -1,4 +1,5 @@
 ﻿using efpe.View.Admin.CRUD;
+using efpe.View.Admin.CRUD.Pembayaran;
 using efpe.View.Client.Pesan;
 using efpe.View.Client.User.Login;
 using efpe.View.Client.User.Register;
@@ -46,6 +47,13 @@ namespace efpe
         {
             this.Hide();
             Pesan form = new Pesan();
+            form.Show();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            LaporanPembayaran form = new LaporanPembayaran();
             form.Show();
         }
     }

@@ -13,7 +13,7 @@ namespace efpe.Model.Repository
         {
             try
             {
-                string insertQuery = "INSERT INTO users (Username, Email, Password) VALUES (@Username, @Email, @Password)";
+                string insertQuery = "INSERT INTO users (Username, Email, Password, VipAtauReguler) VALUES (@Username, @Email, @Password, @VipAtauReguler)";
 
                 using (MySqlConnection connection = _dbContext.GetConnection())
                 {
@@ -24,6 +24,7 @@ namespace efpe.Model.Repository
                         command.Parameters.AddWithValue("@Username", newUser.Username);
                         command.Parameters.AddWithValue("@Email", newUser.Email);
                         command.Parameters.AddWithValue("@Password", newUser.Password);
+                        command.Parameters.AddWithValue("@VipAtauReguler", newUser.VipAtauReguler);
 
                         Console.WriteLine($"Executing query: {command.CommandText}");
 
@@ -48,7 +49,7 @@ namespace efpe.Model.Repository
         {
             try
             {
-                string selectQuery = "SELECT * FROM users WHERE Username = @UsernameOrEmail OR Email = @UsernameOrEmail AND Password = @Password";
+                string selectQuery = "SELECT * FROM users WHERE (Username = @UsernameOrEmail OR Email = @UsernameOrEmail) AND Password = @Password";
 
                 using (MySqlConnection connection = _dbContext.GetConnection())
                 {
@@ -115,6 +116,48 @@ namespace efpe.Model.Repository
             catch (Exception ex)
             {
                 Console.WriteLine($"Exception in GetUsernameAndEmail: {ex.Message}");
+                return null;
+            }
+            finally
+            {
+                _dbContext.CloseConnection();
+            }
+        }
+
+        public string GetVipAtauReguler(string email)
+        {
+            try
+            {
+                string selectQuery = "SELECT VipAtauReguler FROM users WHERE Email = @Email";
+
+                using (MySqlConnection connection = _dbContext.GetConnection())
+                {
+                    connection.Open();
+
+                    using (MySqlCommand command = new MySqlCommand(selectQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@Email", email);
+
+                        Console.WriteLine($"Executing query: {command.CommandText}");
+
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                string vipAtauReguler = reader["VipAtauReguler"].ToString();
+                                return vipAtauReguler;
+                            }
+                            else
+                            {
+                                return null;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception in GetVipAtauReguler: {ex.Message}");
                 return null;
             }
             finally

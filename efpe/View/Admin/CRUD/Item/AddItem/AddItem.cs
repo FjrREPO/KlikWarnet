@@ -70,7 +70,7 @@ namespace efpe.View.Admin.CRUD.AddItem
             ItemEntity newItem = new ItemEntity
             {
                 NomorKomputer = itemNomorKomputer,
-                Digunakan = false,
+                Digunakan = 0,
                 Image = imageBytes
             };
 

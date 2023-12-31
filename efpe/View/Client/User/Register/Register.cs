@@ -21,10 +21,11 @@ namespace efpe.View.Client.User.Register
             string email = txtEmail.Text;
             string password = txtPassword.Text;
             string confirmPassword = txtKonfirmasiPassword.Text;
+            string vipAtauReguler = "Reguler";
 
             if (password.Equals(confirmPassword))
             {
-                bool registrationResult = _userController.RegisterUser(username, email, password);
+                bool registrationResult = _userController.RegisterUser(username, email, password, vipAtauReguler);
 
                 if (registrationResult)
                 {

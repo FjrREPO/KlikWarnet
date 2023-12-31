@@ -89,5 +89,19 @@ namespace efpe.Controller
                 return null;
             }
         }
+
+        public bool UpdateDigunakan(int nomorKomputer, int digunakan)
+        {
+            try
+            {
+                ItemRepository itemRepository = new ItemRepository();
+                return itemRepository.UpdateDigunakan(nomorKomputer, digunakan);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception in UpdateDigunakan (ItemController): {ex.Message}");
+                return false;
+            }
+        }
     }
 }

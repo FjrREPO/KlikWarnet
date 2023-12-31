@@ -12,7 +12,7 @@ namespace efpe.Model.Repository
         private readonly DbContext _dbContext = new DbContext();
         private readonly PembayaranController _pembayaranController = new PembayaranController();
 
-        public List<PembayaranEntity> GetPembayarans()
+        public List<PembayaranEntity> GetPembayaran()
         {
             try
             {
@@ -27,6 +27,9 @@ namespace efpe.Model.Repository
                     {
                         PembayaranEntity pembayaran = new PembayaranEntity
                         {
+                            Nomor = result.Rows.IndexOf(row) + 1,
+                            Id_pembayaran = Convert.ToInt32(row["Id_pembayaran"]),
+                            WaktuPembayaran = Convert.ToDateTime(row["WaktuPembayaran"]),
                             NomorKomputer = Convert.ToInt32(row["NomorKomputer"]),
                             Username = row["Username"].ToString(),
                             Email = row["Email"].ToString(),
@@ -60,7 +63,7 @@ namespace efpe.Model.Repository
         {
             try
             {
-                string insertQuery = "INSERT INTO pembayaran (NomorKomputer, Username, Email, VipAtauRegular, MetodePembayaran, KodePromo, Harga, Durasi, WaktuMulai, WaktuSelesai) VALUES (@NomorKomputer, @Username, @Email, @VipAtauRegular, @MetodePembayaran, @KodePromo, @Harga, @Durasi, @WaktuMulai, @WaktuSelesai)";
+                string insertQuery = "INSERT INTO pembayaran (WaktuPembayaran, Username, Email, NomorKomputer, VipAtauRegular, MetodePembayaran, KodePromo, Harga, Durasi, WaktuMulai, WaktuSelesai) VALUES (@WaktuPembayaran, @Username, @Email, @NomorKomputer, @VipAtauRegular, @MetodePembayaran, @KodePromo, @Harga, @Durasi, @WaktuMulai, @WaktuSelesai)";
 
                 using (MySqlConnection connection = _dbContext.GetConnection())
                 {
@@ -68,9 +71,10 @@ namespace efpe.Model.Repository
 
                     using (MySqlCommand command = new MySqlCommand(insertQuery, connection))
                     {
-                        command.Parameters.AddWithValue("@NomorKomputer", newPembayaran.NomorKomputer);
+                        command.Parameters.AddWithValue("@WaktuPembayaran", newPembayaran.WaktuPembayaran);
                         command.Parameters.AddWithValue("@Username", newPembayaran.Username); 
                         command.Parameters.AddWithValue("@Email", newPembayaran.Email); 
+                        command.Parameters.AddWithValue("@NomorKomputer", newPembayaran.NomorKomputer);
                         command.Parameters.AddWithValue("@VipAtauRegular", newPembayaran.VipAtauRegular);
                         command.Parameters.AddWithValue("@MetodePembayaran", newPembayaran.MetodePembayaran);
                         command.Parameters.AddWithValue("@KodePromo", newPembayaran.KodePromo);
@@ -133,6 +137,47 @@ namespace efpe.Model.Repository
             {
                 Console.WriteLine($"Exception in UpdateData: {ex.Message}");
                 return false;
+            }
+            finally
+            {
+                _dbContext.CloseConnection();
+            }
+        }
+
+        public DateTime? GetWaktuSelesai(int nomorKomputer)
+        {
+            try
+            {
+                string query = "SELECT WaktuSelesai FROM pembayaran WHERE NomorKomputer = @NomorKomputer AND WaktuSelesai >= @WaktuPembayaran ORDER BY WaktuSelesai DESC LIMIT 1";
+
+                using (MySqlConnection connection = _dbContext.GetConnection())
+                {
+                    connection.Open();
+
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@NomorKomputer", nomorKomputer);
+                        command.Parameters.AddWithValue("@WaktuPembayaran", DateTime.Now);
+
+                        Console.WriteLine($"Executing query: {command.CommandText}");
+
+                        object result = command.ExecuteScalar();
+
+                        if (result != null && result != DBNull.Value)
+                        {
+                            return (DateTime)result;
+                        }
+                        else
+                        {
+                            return null;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception in GetWaktuSelesai: {ex.Message}");
+                throw;
             }
             finally
             {

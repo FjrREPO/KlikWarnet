@@ -33,7 +33,7 @@ namespace efpe.Repository
                             Id = Convert.ToInt32(row["Id"]),
                             NomorKomputer = Convert.ToInt32(row["NomorKomputer"]),
                             VipAtauReguler = row["VipAtauReguler"].ToString(),
-                            Digunakan = Convert.ToBoolean(row["Digunakan"]),
+                            Digunakan = Convert.ToInt32(row["Digunakan"]),
                             Image = ResizeImage(row["Image"] as byte[], maxHeight: 50)
                         };
                         items.Add(item);
@@ -179,6 +179,45 @@ namespace efpe.Repository
             catch (Exception ex)
             {
                 Console.WriteLine($"Exception in DeleteItem: {ex.Message}");
+                return false;
+            }
+            finally
+            {
+                _dbContext.CloseConnection();
+            }
+        }
+
+        public bool UpdateDigunakan(int nomorKomputer, int newDigunakanValue)
+        {
+            try
+            {
+                string updateDigunakanQuery = "UPDATE items SET Digunakan = @Digunakan WHERE NomorKomputer = @NomorKomputer";
+
+                using (MySqlConnection connection = _dbContext.GetConnection())
+                {
+                    connection.Open();
+
+                    using (MySqlCommand command = new MySqlCommand(updateDigunakanQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@Digunakan", newDigunakanValue);
+                        command.Parameters.AddWithValue("@NomorKomputer", nomorKomputer);
+
+                        Console.WriteLine($"Executing query: {command.CommandText}");
+
+                        int rowsAffected = command.ExecuteNonQuery();
+
+                        return rowsAffected > 0;
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine($"MySQL Exception in UpdateDigunakan: {ex.Message}");
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception in UpdateDigunakan: {ex.Message}");
                 return false;
             }
             finally
