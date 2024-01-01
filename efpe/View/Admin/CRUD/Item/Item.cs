@@ -271,5 +271,12 @@ namespace efpe.View.Admin.CRUD
                 MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void pictureBox14_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            View.Admin.Beranda.Beranda beranda = new View.Admin.Beranda.Beranda();
+            beranda.Show();
+        }
     }
 }

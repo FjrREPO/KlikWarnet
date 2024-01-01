@@ -1,6 +1,6 @@
 ﻿using efpe.Controller;
 using efpe.Model.Entity;
-using efpe.Model.Repository;
+using efpe.Repository;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,33 +9,40 @@ using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace efpe.View.Admin.CRUD.Pembayaran
+namespace efpe.View.Admin.CRUD.Promo
 {
-    public partial class LaporanPembayaran : Form
+    public partial class Promo : Form
     {
-        private readonly PembayaranRepository _pembayaranRepository = new PembayaranRepository();
+        private readonly PromoRepository _promoRepository = new PromoRepository();
         private string currentSortColumn = string.Empty;
         private SortOrder currentSortOrder = SortOrder.Ascending;
-        private PembayaranController _pembayaranController;
+        private PromoController _promoController;
 
-        public LaporanPembayaran()
+        public Promo()
         {
             InitializeComponent();
-            _pembayaranController = new PembayaranController();
+            _promoController = new PromoController();
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            btnTambah.FlatStyle = FlatStyle.Flat;
+            btnTambah.FlatAppearance.BorderSize = 0;
+            btnEdit.FlatStyle = FlatStyle.Flat;
+            btnEdit.FlatAppearance.BorderSize = 0;
             btnHapus.FlatStyle = FlatStyle.Flat;
             btnHapus.FlatAppearance.BorderSize = 0;
+            SetRoundedButton(btnTambah, 20);
             SetRoundedPictureBox(refreshFormBtn, 10);
             comboBoxSortBy.Items.Add("Nomor");
-            comboBoxSortBy.Items.Add("NomorKomputer");
-            comboBoxSortBy.Items.Add("VipAtauRegular");
-            comboBoxSortBy.Items.Add("Id_pembayaran");
+            comboBoxSortBy.Items.Add("Durasi");
+            comboBoxSortBy.Items.Add("Diskon");
+            comboBoxSortBy.Items.Add("KodePromo");
+            comboBoxSortBy.Items.Add("Id");
 
             comboBoxSearchBy.Items.Add("Nomor");
-            comboBoxSearchBy.Items.Add("NomorKomputer");
-            comboBoxSearchBy.Items.Add("VipAtauRegular");
-            comboBoxSearchBy.Items.Add("Id_pembayaran");
+            comboBoxSearchBy.Items.Add("Durasi");
+            comboBoxSearchBy.Items.Add("Diskon");
+            comboBoxSearchBy.Items.Add("KodePromo");
+            comboBoxSearchBy.Items.Add("Id");
 
             comboBoxOrderBy.Items.Add("ASC");
             comboBoxOrderBy.Items.Add("DESC");
@@ -44,7 +51,7 @@ namespace efpe.View.Admin.CRUD.Pembayaran
 
         public void Tampil()
         {
-            dataGridView1.DataSource = _pembayaranRepository.GetPembayaran();
+            dataGridView1.DataSource = _promoRepository.GetPromo();
         }
 
         private void CRUD_Load(object sender, EventArgs e)
@@ -76,6 +83,13 @@ namespace efpe.View.Admin.CRUD.Pembayaran
 
             Region region = new Region(path);
             pictureBox.Region = region;
+        }
+
+        private void btnTambah_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            View.Admin.CRUD.Promo.AddPromo.AddPromo form = new View.Admin.CRUD.Promo.AddPromo.AddPromo();
+            form.Show();
         }
 
         private void refreshFormBtn_Click(object sender, EventArgs e)
@@ -124,9 +138,9 @@ namespace efpe.View.Admin.CRUD.Pembayaran
 
             return string.IsNullOrEmpty(selectedSearchProperty) ||
                    selectedSearchProperty == "Nomor" ||
-                   selectedSearchProperty == "NomorKomputer" ||
-                   selectedSearchProperty == "VipAtauRegular" ||
-                   selectedSearchProperty == "Id_pembayaran";
+                   selectedSearchProperty == "Durasi" ||
+                   selectedSearchProperty == "KodePromo" ||
+                   selectedSearchProperty == "Id";
         }
 
         private void ApplyFilterAndSort()
@@ -134,26 +148,29 @@ namespace efpe.View.Admin.CRUD.Pembayaran
             string searchKeyword = searchBox.Text.ToLower();
             string searchBy = comboBoxSearchBy.SelectedItem?.ToString();
 
-            var filteredItems = _pembayaranRepository.GetPembayaran().Where(item =>
+            var filteredItems = _promoRepository.GetPromo().Where(item =>
             {
                 if (string.IsNullOrEmpty(searchBy))
                 {
                     return item.Nomor.ToString().Contains(searchKeyword) ||
-                           item.NomorKomputer.ToString().Contains(searchKeyword) ||
-                           item.VipAtauRegular.ToLower().Contains(searchKeyword) ||
-                           item.Id_pembayaran.ToString().Contains(searchKeyword);
+                           item.Durasi.ToString().Contains(searchKeyword) ||
+                           item.Diskon.ToString().Contains(searchKeyword) ||
+                           item.KodePromo.ToLower().Contains(searchKeyword) ||
+                           item.Id.ToString().Contains(searchKeyword);
                 }
 
                 switch (searchBy)
                 {
                     case "Nomor":
                         return item.Nomor.ToString().Contains(searchKeyword);
-                    case "NomorKomputer":
-                        return item.NomorKomputer.ToString().Contains(searchKeyword);
-                    case "VipAtauRegular":
-                        return item.VipAtauRegular.ToLower().Contains(searchKeyword);
-                    case "Id_pembayaran":
-                        return item.Id_pembayaran.ToString().Contains(searchKeyword);
+                    case "Durasi":
+                        return item.Durasi.ToString().Contains(searchKeyword);
+                    case "Diskon":
+                        return item.Diskon.ToString().Contains(searchKeyword);
+                    case "KodePromo":
+                        return item.KodePromo.ToLower().Contains(searchKeyword);
+                    case "Id":
+                        return item.Id.ToString().Contains(searchKeyword);
                     default:
                         return false;
                 }
@@ -169,7 +186,7 @@ namespace efpe.View.Admin.CRUD.Pembayaran
             dataGridView1.DataSource = filteredItems;
         }
 
-        private List<PembayaranEntity> ApplySorting(List<PembayaranEntity> items)
+        private List<PromoEntity> ApplySorting(List<PromoEntity> items)
         {
             if (!string.IsNullOrEmpty(currentSortColumn))
             {
@@ -179,23 +196,46 @@ namespace efpe.View.Admin.CRUD.Pembayaran
                         return currentSortOrder == SortOrder.Ascending
                             ? items.OrderBy(item => item.Nomor).ToList()
                             : items.OrderByDescending(item => item.Nomor).ToList();
-                    case "NomorKomputer":
+                    case "Durasi":
                         return currentSortOrder == SortOrder.Ascending
-                            ? items.OrderBy(item => item.NomorKomputer).ToList()
-                            : items.OrderByDescending(item => item.NomorKomputer).ToList();
-                    case "VipAtauRegular":
+                            ? items.OrderBy(item => item.Durasi).ToList()
+                            : items.OrderByDescending(item => item.Durasi).ToList();
+                    case "KodePromo":
                         return currentSortOrder == SortOrder.Ascending
-                            ? items.OrderBy(item => item.VipAtauRegular).ToList()
-                            : items.OrderByDescending(item => item.VipAtauRegular).ToList();
-                    case "Id_pembayaran":
+                            ? items.OrderBy(item => item.KodePromo).ToList()
+                            : items.OrderByDescending(item => item.KodePromo).ToList();
+                    case "Id":
                         return currentSortOrder == SortOrder.Ascending
-                            ? items.OrderBy(item => item.Id_pembayaran).ToList()
-                            : items.OrderByDescending(item => item.Id_pembayaran).ToList();
+                            ? items.OrderBy(item => item.Id).ToList()
+                            : items.OrderByDescending(item => item.Id).ToList();
                     default:
                         return items;
                 }
             }
             return items;
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                int selectedIndex = dataGridView1.SelectedRows[0].Index;
+                List<PromoEntity> items = _promoRepository.GetPromo();
+
+                if (selectedIndex >= 0 && selectedIndex < items.Count)
+                {
+
+                    PromoEntity selecteditem = items[selectedIndex];
+                    this.Hide();
+                    View.Admin.CRUD.Promo.EditPromo.EditPromo form = new View.Admin.CRUD.Promo.EditPromo.EditPromo(selecteditem);
+                    form.Show();
+                    Tampil();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Tolong pilih baris untuk mengedit.", "Edit Item", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void btnHapus_Click(object sender, EventArgs e)
@@ -205,17 +245,17 @@ namespace efpe.View.Admin.CRUD.Pembayaran
                 if (dataGridView1.SelectedRows.Count > 0)
                 {
                     int selectedIndex = dataGridView1.SelectedRows[0].Index;
-                    List<PembayaranEntity> items = _pembayaranRepository.GetPembayaran();
+                    List<PromoEntity> items = _promoRepository.GetPromo();
 
                     if (selectedIndex >= 0 && selectedIndex < items.Count)
                     {
-                        PembayaranEntity selectedItem = items[selectedIndex];
+                        PromoEntity selectedItem = items[selectedIndex];
 
                         DialogResult result = MessageBox.Show("Are you sure you want to delete this item?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                         if (result == DialogResult.Yes)
                         {
-                            bool deleteSuccess = _pembayaranController.DeleteData(selectedItem.Id_pembayaran);
+                            bool deleteSuccess = _promoController.DeletePromo(selectedItem.Id);
 
                             if (deleteSuccess)
                             {

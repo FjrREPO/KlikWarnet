@@ -48,6 +48,20 @@ namespace efpe.Controller
             }
         }
 
+        public bool DeleteData(int id)
+        {
+            try
+            {
+                PembayaranRepository repository = new PembayaranRepository();
+                return repository.DeleteData(id);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception in PembayaranController.DeleteData: {ex.Message}");
+                return false;
+            }
+        }
+
         public DateTime GetWaktuSelesai(int nomorKomputer)
         {
             try

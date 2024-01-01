@@ -144,6 +144,40 @@ namespace efpe.Model.Repository
             }
         }
 
+        public bool DeleteData(int idPembayaran)
+        {
+            try
+            {
+                string deleteQuery = "DELETE FROM pembayaran WHERE Id_pembayaran = @Id_pembayaran";
+
+                using (MySqlConnection connection = _dbContext.GetConnection())
+                {
+                    connection.Open();
+
+                    using (MySqlCommand command = new MySqlCommand(deleteQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@Id_pembayaran", idPembayaran);
+
+                        Console.WriteLine($"Executing query: {command.CommandText}");
+
+                        int rowsAffected = command.ExecuteNonQuery();
+
+                        return rowsAffected > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception in DeleteData: {ex.Message}");
+                return false;
+            }
+            finally
+            {
+                _dbContext.CloseConnection();
+            }
+        }
+
+
         public DateTime? GetWaktuSelesai(int nomorKomputer)
         {
             try

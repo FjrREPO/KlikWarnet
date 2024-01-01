@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Windows.Forms;
 using efpe.Controller;
 using efpe.Model.Entity;
+using efpe.Repository;
 using efpe.View.Client.User.Login;
 
 namespace efpe.View.Client.Pembayaran
@@ -10,8 +12,11 @@ namespace efpe.View.Client.Pembayaran
     public partial class Pembayaran : Form
     {
         private readonly ItemEntity _selectedItem;
+        private readonly PromoRepository _promoRepository = new PromoRepository();
+        private List<PromoEntity> _allItems;
         private readonly PembayaranController _pembayaranController;
         private readonly ItemController _itemController;
+        private readonly PromoController _promoController;
         private readonly Timer _timer;
         private double _originalPrice;
         private bool _isPromoCodeApplied = false;
@@ -22,6 +27,7 @@ namespace efpe.View.Client.Pembayaran
             _selectedItem = selectedItem;
             _pembayaranController = new PembayaranController();
             _itemController = new ItemController();
+            _promoController = new PromoController();
 
             InitializeComboBoxes();
             InitializeDateTimePicker();
@@ -139,34 +145,33 @@ namespace efpe.View.Client.Pembayaran
         private void btnPakaiKodePromo_Click(object sender, EventArgs e)
         {
             double discountedPrice = 0;
+            string enteredPromoCode = textBoxKodePromo.Text;
 
-            string selectedDuration = comboBoxDurasi.Text;
+            _allItems = _promoRepository.GetPromo();
+            PromoEntity selectedPromo = _allItems.Find(item => item.KodePromo == enteredPromoCode);
 
-            switch (textBoxKodePromo.Text)
+            if (selectedPromo != null)
             {
-                case "warnet2jam" when selectedDuration == "2 Jam":
-                    discountedPrice = _originalPrice * 90 / 100;
+                if (DateTime.Now <= selectedPromo.Expired && selectedPromo.Durasi == Convert.ToInt32(DurasiKeValue()))
+                {
+                    discountedPrice = _originalPrice - (_originalPrice * selectedPromo.Diskon / 100);
                     _isPromoCodeApplied = true;
-                    break;
-
-                case "warnet4jam" when selectedDuration == "4 Jam":
-                    discountedPrice = _originalPrice * 80 / 100;
-                    _isPromoCodeApplied = true;
-                    break;
-
-                case "warnet6jam" when selectedDuration == "6 Jam":
-                    discountedPrice = _originalPrice * 70 / 100;
-                    _isPromoCodeApplied = true;
-                    break;
-
-                default:
+                }
+                else
+                {
                     MessageBox.Show("Kode promo tidak valid atau kadaluwarsa", "Informasi", MessageBoxButtons.OK);
                     _isPromoCodeApplied = false;
-                    return;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Kode promo tidak valid", "Informasi", MessageBoxButtons.OK);
+                _isPromoCodeApplied = false;
             }
 
             labelHarga.Text = discountedPrice.ToString();
         }
+
 
         private void btnBayar_Click(object sender, EventArgs e)
         {
@@ -225,6 +230,13 @@ namespace efpe.View.Client.Pembayaran
             {
                 MessageBox.Show("Masih ada data yang kosong!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void pictureBox14_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            View.Client.Pesan.Pesan pesan = new View.Client.Pesan.Pesan();
+            pesan.Show();
         }
     }
 }

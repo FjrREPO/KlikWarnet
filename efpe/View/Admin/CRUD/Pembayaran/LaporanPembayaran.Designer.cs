@@ -36,8 +36,6 @@
             this.searchBox = new System.Windows.Forms.TextBox();
             this.refreshFormBtn = new System.Windows.Forms.PictureBox();
             this.btnHapus = new System.Windows.Forms.Button();
-            this.btnEdit = new System.Windows.Forms.Button();
-            this.btnTambah = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.searchBtn = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
@@ -57,6 +55,7 @@
             this.pictureBox14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox14.TabIndex = 39;
             this.pictureBox14.TabStop = false;
+            this.pictureBox14.Click += new System.EventHandler(this.pictureBox14_Click);
             // 
             // pictureBox1
             // 
@@ -139,29 +138,7 @@
             this.btnHapus.TabIndex = 48;
             this.btnHapus.Text = "Hapus";
             this.btnHapus.UseVisualStyleBackColor = false;
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(243)))), ((int)(((byte)(56)))));
-            this.btnEdit.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold);
-            this.btnEdit.Location = new System.Drawing.Point(25, 241);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(216, 60);
-            this.btnEdit.TabIndex = 47;
-            this.btnEdit.Text = "Edit";
-            this.btnEdit.UseVisualStyleBackColor = false;
-            // 
-            // btnTambah
-            // 
-            this.btnTambah.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(236)))), ((int)(((byte)(221)))));
-            this.btnTambah.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTambah.ForeColor = System.Drawing.Color.Black;
-            this.btnTambah.Location = new System.Drawing.Point(25, 166);
-            this.btnTambah.Name = "btnTambah";
-            this.btnTambah.Size = new System.Drawing.Size(216, 60);
-            this.btnTambah.TabIndex = 46;
-            this.btnTambah.Text = "Tambah";
-            this.btnTambah.UseVisualStyleBackColor = false;
+            this.btnHapus.Click += new System.EventHandler(this.btnHapus_Click);
             // 
             // dataGridView1
             // 
@@ -205,13 +182,12 @@
             this.Controls.Add(this.searchBox);
             this.Controls.Add(this.refreshFormBtn);
             this.Controls.Add(this.btnHapus);
-            this.Controls.Add(this.btnEdit);
-            this.Controls.Add(this.btnTambah);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.pictureBox14);
             this.Controls.Add(this.pictureBox1);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "LaporanPembayaran";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LaporanPembayaran";
             this.Load += new System.EventHandler(this.CRUD_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
@@ -233,8 +209,6 @@
         private System.Windows.Forms.TextBox searchBox;
         private System.Windows.Forms.PictureBox refreshFormBtn;
         private System.Windows.Forms.Button btnHapus;
-        private System.Windows.Forms.Button btnEdit;
-        private System.Windows.Forms.Button btnTambah;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.PictureBox searchBtn;
     }

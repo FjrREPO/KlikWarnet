@@ -1,6 +1,7 @@
 ﻿using efpe.View.Admin.CRUD;
 using efpe.View.Admin.CRUD.Pembayaran;
 using efpe.View.Client.Pesan;
+using efpe.View.Client.Promo;
 using efpe.View.Client.User.Login;
 using efpe.View.Client.User.Register;
 using System;
@@ -20,13 +21,7 @@ namespace efpe
         public Home()
         {
             InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            Item form = new Item();
-            form.Show();
+            btnLogin.Cursor = Cursors.Hand;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -36,24 +31,17 @@ namespace efpe
             form.Show();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Register form = new Register();
+            efpe.View.Admin.CRUD.Promo.Promo form = new efpe.View.Admin.CRUD.Promo.Promo();
             form.Show();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void button2_Click_1(object sender, EventArgs e)
         {
             this.Hide();
-            Pesan form = new Pesan();
-            form.Show();
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            LaporanPembayaran form = new LaporanPembayaran();
+            efpe.View.Client.Promo.Promo form = new efpe.View.Client.Promo.Promo();
             form.Show();
         }
     }

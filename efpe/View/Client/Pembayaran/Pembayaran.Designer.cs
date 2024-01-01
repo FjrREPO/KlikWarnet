@@ -85,7 +85,7 @@
             this.tableLayoutPanel1.Controls.Add(this.label9, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.dateTimePickerWaktuMulai, 1, 6);
             this.tableLayoutPanel1.Controls.Add(this.textBoxKodePromo, 1, 8);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(131, 181);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(99, 164);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 10;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.999999F));
@@ -318,19 +318,20 @@
             // pictureBox14
             // 
             this.pictureBox14.Image = global::efpe.Properties.Resources.image__14_;
-            this.pictureBox14.Location = new System.Drawing.Point(34, 101);
+            this.pictureBox14.Location = new System.Drawing.Point(35, 33);
             this.pictureBox14.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox14.Name = "pictureBox14";
             this.pictureBox14.Size = new System.Drawing.Size(31, 31);
             this.pictureBox14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox14.TabIndex = 39;
             this.pictureBox14.TabStop = false;
+            this.pictureBox14.Click += new System.EventHandler(this.pictureBox14_Click);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.pictureBox1.Image = global::efpe.Properties.Resources.Cuplikan_layar_2023_12_11_182145_removebg_preview;
-            this.pictureBox1.Location = new System.Drawing.Point(226, 22);
+            this.pictureBox1.Location = new System.Drawing.Point(183, 13);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.MaximumSize = new System.Drawing.Size(283, 62);
             this.pictureBox1.Name = "pictureBox1";
@@ -344,7 +345,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(251, 116);
+            this.label7.Location = new System.Drawing.Point(186, 102);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(303, 41);
             this.label7.TabIndex = 41;
@@ -356,7 +357,7 @@
             this.btnBayar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnBayar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBayar.ForeColor = System.Drawing.Color.White;
-            this.btnBayar.Location = new System.Drawing.Point(131, 830);
+            this.btnBayar.Location = new System.Drawing.Point(99, 794);
             this.btnBayar.Name = "btnBayar";
             this.btnBayar.Size = new System.Drawing.Size(480, 54);
             this.btnBayar.TabIndex = 42;
@@ -370,7 +371,7 @@
             this.btnPakaiKodePromo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btnPakaiKodePromo.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPakaiKodePromo.ForeColor = System.Drawing.Color.White;
-            this.btnPakaiKodePromo.Location = new System.Drawing.Point(617, 663);
+            this.btnPakaiKodePromo.Location = new System.Drawing.Point(591, 645);
             this.btnPakaiKodePromo.Name = "btnPakaiKodePromo";
             this.btnPakaiKodePromo.Size = new System.Drawing.Size(75, 33);
             this.btnPakaiKodePromo.TabIndex = 43;
@@ -384,7 +385,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
-            this.ClientSize = new System.Drawing.Size(821, 450);
+            this.ClientSize = new System.Drawing.Size(709, 450);
             this.Controls.Add(this.btnPakaiKodePromo);
             this.Controls.Add(this.btnBayar);
             this.Controls.Add(this.label7);

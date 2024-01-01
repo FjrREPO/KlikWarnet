@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
 using efpe.Controller;
-using efpe.View.Admin.CRUD.User.Login;
 
 namespace efpe.View.Client.User.Register
 {
@@ -13,6 +12,8 @@ namespace efpe.View.Client.User.Register
         {
             InitializeComponent();
             _userController = new UserController();
+            btnDaftar.Cursor = Cursors.Hand;
+            pictureBox14.Cursor = Cursors.Hand;
         }
 
         private void btnDaftar_Click(object sender, EventArgs e)
@@ -43,6 +44,13 @@ namespace efpe.View.Client.User.Register
             {
                 MessageBox.Show("Password and Confirm Password do not match. Please check and try again.");
             }
+        }
+
+        private void pictureBox14_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            View.Client.User.Login.Login form = new View.Client.User.Login.Login();
+            form.Show();
         }
     }
 }

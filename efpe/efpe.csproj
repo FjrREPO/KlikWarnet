@@ -100,6 +100,7 @@
   <ItemGroup>
     <Compile Include="Controller\ItemController.cs" />
     <Compile Include="Controller\PembayaranController.cs" />
+    <Compile Include="Controller\PromoController.cs" />
     <Compile Include="Controller\UserController.cs" />
     <Compile Include="Home.cs">
       <SubType>Form</SubType>
@@ -110,12 +111,20 @@
     <Compile Include="Model\DbContext\DbContext.cs" />
     <Compile Include="Model\Entity\ItemEntity.cs" />
     <Compile Include="Model\Entity\PembayaranEntity.cs" />
+    <Compile Include="Model\Entity\PromoEntity.cs" />
     <Compile Include="Model\Entity\UserEntity.cs" />
     <Compile Include="Model\Repository\ItemRepository.cs" />
     <Compile Include="Model\Repository\PembayaranRepository.cs" />
+    <Compile Include="Model\Repository\PromoRepository.cs" />
     <Compile Include="Model\Repository\UserRepository.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\Admin\Beranda\Beranda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Admin\Beranda\Beranda.Designer.cs">
+      <DependentUpon>Beranda.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Admin\CRUD\Item\AddItem\AddItem.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,17 +149,23 @@
     <Compile Include="View\Admin\CRUD\Pembayaran\LaporanPembayaran.Designer.cs">
       <DependentUpon>LaporanPembayaran.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Admin\CRUD\User\Login\Login.cs">
+    <Compile Include="View\Admin\CRUD\Promo\AddPromo\AddPromo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Admin\CRUD\User\Login\Login.Designer.cs">
-      <DependentUpon>Login.cs</DependentUpon>
+    <Compile Include="View\Admin\CRUD\Promo\AddPromo\AddPromo.Designer.cs">
+      <DependentUpon>AddPromo.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Admin\CRUD\User\Register\Register.cs">
+    <Compile Include="View\Admin\CRUD\Promo\EditPromo\EditPromo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Admin\CRUD\User\Register\Register.Designer.cs">
-      <DependentUpon>Register.cs</DependentUpon>
+    <Compile Include="View\Admin\CRUD\Promo\EditPromo\EditPromo.Designer.cs">
+      <DependentUpon>EditPromo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\CRUD\Promo\Promo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Admin\CRUD\Promo\Promo.Designer.cs">
+      <DependentUpon>Promo.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Client\Beranda\Beranda.cs">
       <SubType>Form</SubType>
@@ -170,16 +185,28 @@
     <Compile Include="View\Client\Pesan\Pesan.Designer.cs">
       <DependentUpon>Pesan.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Client\User\Login\Login.cs">
+    <Compile Include="View\Client\Promo\Promo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Client\User\Login\Login.Designer.cs">
+    <Compile Include="View\Client\Promo\Promo.Designer.cs">
+      <DependentUpon>Promo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Client\UpgradeVIP\UpgradeVIP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Client\UpgradeVIP\UpgradeVIP.Designer.cs">
+      <DependentUpon>UpgradeVIP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\User\Login\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\User\Login\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Client\User\Register\Register.cs">
+    <Compile Include="View\User\Register\Register.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Client\User\Register\Register.Designer.cs">
+    <Compile Include="View\User\Register\Register.Designer.cs">
       <DependentUpon>Register.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Home.resx">
@@ -195,6 +222,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\Admin\Beranda\Beranda.resx">
+      <DependentUpon>Beranda.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Admin\CRUD\Item\AddItem\AddItem.resx">
       <DependentUpon>AddItem.cs</DependentUpon>
     </EmbeddedResource>
@@ -207,6 +237,15 @@
     <EmbeddedResource Include="View\Admin\CRUD\Pembayaran\LaporanPembayaran.resx">
       <DependentUpon>LaporanPembayaran.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Admin\CRUD\Promo\AddPromo\AddPromo.resx">
+      <DependentUpon>AddPromo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Admin\CRUD\Promo\EditPromo\EditPromo.resx">
+      <DependentUpon>EditPromo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Admin\CRUD\Promo\Promo.resx">
+      <DependentUpon>Promo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Client\Beranda\Beranda.resx">
       <DependentUpon>Beranda.cs</DependentUpon>
     </EmbeddedResource>
@@ -216,10 +255,16 @@
     <EmbeddedResource Include="View\Client\Pesan\Pesan.resx">
       <DependentUpon>Pesan.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Client\User\Login\Login.resx">
+    <EmbeddedResource Include="View\Client\Promo\Promo.resx">
+      <DependentUpon>Promo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Client\UpgradeVIP\UpgradeVIP.resx">
+      <DependentUpon>UpgradeVIP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\User\Login\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Client\User\Register\Register.resx">
+    <EmbeddedResource Include="View\User\Register\Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -252,7 +297,7 @@
     <None Include="Resources\search %282%29.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="View\Client\Promo\" />
+    <None Include="Resources\logout.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

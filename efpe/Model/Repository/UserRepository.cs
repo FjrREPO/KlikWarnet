@@ -9,6 +9,55 @@ namespace efpe.Model.Repository
     {
         private readonly DbContext _dbContext = new DbContext();
 
+        public UserEntity GetData(string usernameOrEmail)
+        {
+            try
+            {
+                string selectQuery = "SELECT * FROM users WHERE Username = @UsernameOrEmail OR Email = @UsernameOrEmail";
+
+                using (MySqlConnection connection = _dbContext.GetConnection())
+                {
+                    connection.Open();
+
+                    using (MySqlCommand command = new MySqlCommand(selectQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@UsernameOrEmail", usernameOrEmail);
+
+                        Console.WriteLine($"Executing query: {command.CommandText}");
+
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                UserEntity userData = new UserEntity
+                                {
+                                    Username = reader["Username"].ToString(),
+                                    Email = reader["Email"].ToString(),
+                                    Password = reader["Password"].ToString(),
+                                    VipAtauReguler = reader["VipAtauReguler"].ToString()
+                                };
+
+                                return userData;
+                            }
+                            else
+                            {
+                                return null;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception in GetData: {ex.Message}");
+                return null;
+            }
+            finally
+            {
+                _dbContext.CloseConnection();
+            }
+        }
+
         public bool RegisterUser(UserEntity newUser)
         {
             try
@@ -159,6 +208,40 @@ namespace efpe.Model.Repository
             {
                 Console.WriteLine($"Exception in GetVipAtauReguler: {ex.Message}");
                 return null;
+            }
+            finally
+            {
+                _dbContext.CloseConnection();
+            }
+        }
+
+        public bool UpdateVipAtauRegulerByEmail(string email, string newVipAtauReguler)
+        {
+            try
+            {
+                string updateQuery = "UPDATE users SET VipAtauReguler = @NewVipAtauReguler WHERE Email = @Email";
+
+                using (MySqlConnection connection = _dbContext.GetConnection())
+                {
+                    connection.Open();
+
+                    using (MySqlCommand command = new MySqlCommand(updateQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@NewVipAtauReguler", newVipAtauReguler);
+                        command.Parameters.AddWithValue("@Email", email);
+
+                        Console.WriteLine($"Executing query: {command.CommandText}");
+
+                        int rowsAffected = command.ExecuteNonQuery();
+
+                        return rowsAffected > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception in UpdateVipAtauRegulerByEmail: {ex.Message}");
+                return false;
             }
             finally
             {

@@ -18,6 +18,9 @@ namespace efpe.View.Client.User.Login
             _userController = new UserController();
             txtUsernameOrEmail.KeyDown += TxtUsernameOrEmail_KeyDown;
             txtPassword.KeyDown += TxtPassword_KeyDown;
+            labelDaftar.Cursor = Cursors.Hand;
+            btnLogin.Cursor = Cursors.Hand;
+            pictureBox14.Cursor = Cursors.Hand;
         }
 
         private void TxtUsernameOrEmail_KeyDown(object sender, KeyEventArgs e)
@@ -57,7 +60,7 @@ namespace efpe.View.Client.User.Login
                 if (usernameOrEmail == "admin" && password == "admin")
                 {
                     this.Hide();
-                    Item form = new Item();
+                    View.Admin.Beranda.Beranda form = new View.Admin.Beranda.Beranda();
                     form.Show();
                 }
                 else
@@ -88,6 +91,20 @@ namespace efpe.View.Client.User.Login
         public CookieContainer GetCookies()
         {
             return cookies;
+        }
+
+        private void pictureBox14_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Home form = new Home();
+            form.Show();
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            User.Register.Register form = new User.Register.Register();
+            form.Show();
         }
     }
 }

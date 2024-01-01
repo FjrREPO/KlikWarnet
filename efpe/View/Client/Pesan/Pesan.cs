@@ -107,12 +107,14 @@ namespace efpe.View.Client.Pesan
                 int digunakan = 1;
                 _itemController.UpdateDigunakan(nomorKomputer, digunakan);
                 labelDigunakan.Text = "PC sedang\nDigunakan";
+                labelDigunakan.AutoSize = true;
             }
             else
             {
                 int digunakan = 0;
                 _itemController.UpdateDigunakan(nomorKomputer, digunakan);
                 labelDigunakan.Text = "PC dapat\nDipesan";
+                labelDigunakan.AutoSize = true;
             }
         }
 
@@ -191,6 +193,13 @@ namespace efpe.View.Client.Pesan
             }
 
             AdjustFlowLayoutPanelHeight();
+        }
+
+        private void pictureBox14_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            View.Client.Beranda.Beranda beranda = new View.Client.Beranda.Beranda();
+            beranda.Show();
         }
     }
 }
