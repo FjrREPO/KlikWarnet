@@ -35,7 +35,10 @@ namespace efpe.View.Client.Beranda
             button4.FlatAppearance.BorderSize = 0;
             button2.FlatStyle = FlatStyle.Flat;
             button2.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.FlatAppearance.BorderSize = 0;
             SetRoundedButton(button4, 40);
+            SetRoundedButton(button1 , 40);
             SetRoundedButton(button2, 40);
         }
 
@@ -69,8 +72,8 @@ namespace efpe.View.Client.Beranda
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string username = GetCookieValue("Username");
-            UserEntity userData = _promoRepository.GetData(username);
+            string email = GetCookieValue("Email");
+            UserEntity userData = _promoRepository.GetData(email);
 
             if(userData.VipAtauReguler == "Reguler")
             {

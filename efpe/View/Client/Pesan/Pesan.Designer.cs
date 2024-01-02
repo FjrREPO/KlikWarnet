@@ -57,7 +57,7 @@
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.pictureBox1.Image = global::efpe.Properties.Resources.Cuplikan_layar_2023_12_11_182145_removebg_preview;
-            this.pictureBox1.Location = new System.Drawing.Point(233, 13);
+            this.pictureBox1.Location = new System.Drawing.Point(223, 13);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.MaximumSize = new System.Drawing.Size(283, 62);
             this.pictureBox1.Name = "pictureBox1";
@@ -72,7 +72,7 @@
             this.flowLayoutVIP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.flowLayoutVIP.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flowLayoutVIP.ForeColor = System.Drawing.Color.White;
-            this.flowLayoutVIP.Location = new System.Drawing.Point(13, 150);
+            this.flowLayoutVIP.Location = new System.Drawing.Point(3, 150);
             this.flowLayoutVIP.Name = "flowLayoutVIP";
             this.flowLayoutVIP.Size = new System.Drawing.Size(755, 307);
             this.flowLayoutVIP.TabIndex = 38;
@@ -107,7 +107,7 @@
             // 
             this.panelVIP.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panelVIP.Controls.Add(this.labelVIP);
-            this.panelVIP.Location = new System.Drawing.Point(232, 95);
+            this.panelVIP.Location = new System.Drawing.Point(222, 95);
             this.panelVIP.Name = "panelVIP";
             this.panelVIP.Size = new System.Drawing.Size(93, 49);
             this.panelVIP.TabIndex = 41;
@@ -117,7 +117,7 @@
             this.panelReguler.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panelReguler.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.panelReguler.Controls.Add(this.labelReguler);
-            this.panelReguler.Location = new System.Drawing.Point(357, 95);
+            this.panelReguler.Location = new System.Drawing.Point(347, 95);
             this.panelReguler.Name = "panelReguler";
             this.panelReguler.Size = new System.Drawing.Size(158, 49);
             this.panelReguler.TabIndex = 42;

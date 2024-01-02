@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -84,7 +85,16 @@ namespace efpe.View.Client.Pesan
 
             Button buttonPesan = new Button();
             buttonPesan.Text = "Pesan";
+            buttonPesan.Font = new Font(buttonPesan.Font, FontStyle.Bold);
             buttonPesan.Location = new System.Drawing.Point(10, 200);
+            buttonPesan.ForeColor = Color.White;
+            buttonPesan.Width = 75;
+            buttonPesan.Height = 30;
+            buttonPesan.AutoSize = false;
+            buttonPesan.BackColor = Color.FromArgb(255, 99, 99);
+            buttonPesan.FlatAppearance.BorderSize = 0;
+            buttonPesan.FlatStyle = FlatStyle.Flat;
+            SetRoundedButton(buttonPesan, 20);
 
             buttonPesan.Tag = item;
             buttonPesan.Click += buttonPesan_Click;
@@ -96,7 +106,18 @@ namespace efpe.View.Client.Pesan
 
             return panel;
         }
+        private void SetRoundedButton(Button button, int radius)
+        {
+            GraphicsPath path = new GraphicsPath();
+            path.AddArc(0, 0, radius, radius, 180, 90);
+            path.AddArc(button.Width - radius, 0, radius, radius, 270, 90);
+            path.AddArc(button.Width - radius, button.Height - radius, radius, radius, 0, 90);
+            path.AddArc(0, button.Height - radius, radius, radius, 90, 90);
+            path.CloseFigure();
 
+            Region region = new Region(path);
+            button.Region = region;
+        }
         private void UpdateLabelDigunakan(Label labelDigunakan, int nomorKomputer)
         {
             DateTime waktuSelesai = _pembayaranController.GetWaktuSelesai(nomorKomputer);

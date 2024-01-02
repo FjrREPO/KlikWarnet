@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.labelDaftar = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -37,7 +38,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.labelDaftar = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -60,10 +60,24 @@
             this.groupBox1.TabIndex = 41;
             this.groupBox1.TabStop = false;
             // 
+            // labelDaftar
+            // 
+            this.labelDaftar.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.labelDaftar.AutoSize = true;
+            this.labelDaftar.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDaftar.ForeColor = System.Drawing.Color.White;
+            this.labelDaftar.Location = new System.Drawing.Point(91, 307);
+            this.labelDaftar.Name = "labelDaftar";
+            this.labelDaftar.Size = new System.Drawing.Size(215, 23);
+            this.labelDaftar.TabIndex = 10;
+            this.labelDaftar.Text = "Belum punya akun? Daftar";
+            this.labelDaftar.Click += new System.EventHandler(this.label3_Click);
+            // 
             // btnLogin
             // 
             this.btnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnLogin.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogin.ForeColor = System.Drawing.Color.White;
             this.btnLogin.Location = new System.Drawing.Point(29, 246);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(342, 40);
@@ -92,7 +106,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(119, 17);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Username or email";
+            this.label2.Text = "Username or Email";
             // 
             // txtPassword
             // 
@@ -145,19 +159,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 39;
             this.pictureBox1.TabStop = false;
-            // 
-            // labelDaftar
-            // 
-            this.labelDaftar.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.labelDaftar.AutoSize = true;
-            this.labelDaftar.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDaftar.ForeColor = System.Drawing.Color.White;
-            this.labelDaftar.Location = new System.Drawing.Point(91, 307);
-            this.labelDaftar.Name = "labelDaftar";
-            this.labelDaftar.Size = new System.Drawing.Size(215, 23);
-            this.labelDaftar.TabIndex = 10;
-            this.labelDaftar.Text = "Belum punya akun? Daftar";
-            this.labelDaftar.Click += new System.EventHandler(this.label3_Click);
             // 
             // Login
             // 

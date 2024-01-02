@@ -61,5 +61,12 @@ namespace efpe.View.Client.UpgradeVIP
                 MessageBox.Show("Pembayaran gagal", "Informasi", MessageBoxButtons.OK);
             }
         }
+
+        private void pictureBox14_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            View.Client.Beranda.Beranda beranda = new View.Client.Beranda.Beranda();
+            beranda.Show();
+        }
     }
 }
